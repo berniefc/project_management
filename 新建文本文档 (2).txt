@@ -1,0 +1,170 @@
+debug=false
+#---------------------使用durid连接池
+#开发数据库
+spring.datasource.url=jdbc:mysql://10.10.20.80:3306/cloud_look?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false&rewriteBatchedStatements=true&allowMultiQueries=true
+spring.datasource.username=zscloud
+spring.datasource.password=123456
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+#spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+spring.datasource.initialSize=1
+spring.datasource.minIdle=1
+spring.datasource.maxActive=10
+spring.datasource.maxWait=600000
+spring.datasource.timeBetweenEvictionRunsMillis=60000
+spring.datasource.minEvictableIdleTimeMillis=300000
+spring.datasource.testWhileIdle=true
+spring.datasource.testOnBorrow=false
+spring.datasource.testOnReturn=false
+spring.datasource.druid.test-on-borrow=true
+spring.datasource.druid.test-while-idle=true
+#spring.datasource.poolPreparedStatements=false
+spring.datasource.maxPoolPreparedStatementPerConnectionSize=20
+
+#spring.datasource.url=jdbc:mysql://124.71.144.105:32026/cloud_look?characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&useSSL=false
+#spring.datasource.username=zscloud
+#spring.datasource.password=123456
+
+
+spring.devtools.livereload.enabled=true
+server.port=8184
+spring.application.name=zscloud-look-server
+#logging.level.org.springframework.security=DEBUG
+#logging.level.eureka.client.serviceUrl.defaultZone=http://localhost:8091/eureka/
+#eureka.client.serviceUrl.defaultZone=http://192.168.1.46:8091/eureka/
+# Mybatis 配置
+mybatis-plus.typeAliasesPackage=com.bim.server.entity,;com.workflow.server.entity,;com.zscloud.cloud.look.server.entity
+mybatis-plus.mapper-locations=classpath*:mapper/**/*.xml
+#mybatis-plus.typeAliasesPackage=com.zscloud.cloud.look.server.entity
+#mybatis-plus.mapper-locations=classpath:mapper/**/*Mapper.xml
+#0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+mybatis-plus.global-config.id-type=3
+mybatis-plus.global-config.db-column-underline=false
+mybatis-plus.global-config.refresh-mapper=true
+mybatis-plus.configuration.map-underscore-to-camel-case=false
+#配置的缓存的全局开关
+mybatis-plus.configuration.cache-enabled=true
+#mybatis返回类型为map返回字段值为null的字段
+mybatis-plus.configuration.call-setters-on-nulls=true
+#延时加载的开关
+mybatis-plus.configuration.lazyLoadingEnabled=true
+#开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+mybatis-plus.configuration.multipleResultSetsEnabled=true
+#打印sql语句,调试用
+#mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+spring.servlet.multipart.max-file-size=100Mb
+spring.servlet.multipart.maxRequestSize=100Mb
+#访问统一权限zscloud-auth-server(阿里云环境)
+#url.zscloud.auth.server = http://www.zhushucloud.com/zscloud-auth-server
+#访问统一权限zscloud-auth-server(测试环境)
+#url.zscloud.auth.server = http://zscloud-zuul-server:8094/zscloud-auth-server
+#访问统一权限zscloud-auth-server(本地环境)
+#本机
+spring.servlet.multipart.location=c:/root/zsyfile/
+spring.json.multipart.location=/data/look/form/
+#文件图片回显地址
+url.view.server.url=http://localhost:8183/
+sendMsgUrl=https://api.zhushucloud.cn/sms/sms/sendMessage/sendCustomMsg
+timUrl=http://10.10.23.190:8899/
+cloud.url=https://www.zhushucloud.net
+share.url=https://share.zhushucloud.net
+spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/, classpath:/static/,classpath:/upload/,classpath:/public/, file:${spring.servlet.multipart.location}
+#流媒体服务器地址
+#stream.media=rtmp://uav.zhushucloud.com:1935
+#即时通讯服务地址
+stream.media=rtmp://10.10.20.80:1935
+#spring配置
+spring.aop.proxy-target-class=true
+spring.aop.auto=true
+# 设置本地配置文件优先级更高，方便开发
+spring.cloud.config.allow-override=true
+spring.cloud.config.override-none=true
+##logging.level.com.zscloud.cloud.look.server=error
+logging.level.com.obs.services=error
+logging.level.com.deepoove.poi=error
+mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.nologging.NoLoggingImpl
+logging.level.springfox=info
+#logging.level.com.deepoove.poi=DEBUG
+#logging.level.org.springframework.security=DEBUG #生产环境注释次配置
+#security.oauth2.resource.tokenInfoUri=http://192.168.1.46:8890/oauth/check_token
+#security.oauth2.resource.preferTokenInfo=true
+#security.oauth2.client.accessTokenUri=http://192.168.1.46:8890/oauth/token
+#授权地址
+#security.oauth2.client.userAuthorizationUri=http://192.168.1.46:8890/oauth/authorize
+#security.oauth2.client.clientId=zscloud
+#security.oauth2.client.clientSecret=www.zhushucloud.com
+#回调路径
+#security.oauth2.client.url=http://192.168.1.46:8080
+#security.oauth2.client.response_type=code
+#security.oauth2.resource=http://192.168.1.46:8890/auth/sysUser/me
+#极光推送
+jpush.key=94bc67563504b4b8c6b52635
+jpush.secret=015f1476753437db4ec0c9a6
+#指定开发环境 true为生产模式 false 为测试模式 (android不区分模式,ios区分模式)
+jpush.apnsProduction=false
+#对象存储服务 OBS
+obs.endPoint=obs.cn-east-3.myhuaweicloud.com
+obs.accessKey=P2QXT2XJ2ZEF7NEFXQGJ
+obs.secretKey=3973J93soYfA4eLUPxiYDxqWxCsAbHLbEG9VRuhO
+obs.bucketName=zscloud-test
+obs.srsBucketName=srs-video
+# https://+obs的桶名称+ . +obs的endPoint
+obs.uploadUrl=https://zscloud.zhushucloud.net/
+# 连接工厂使用的数据库索引。
+spring.redis.database=0
+# Redis 服务器主机。
+#spring.redis.host=localhost
+spring.redis.host=10.10.21.105
+# Redis 服务器的登录密码。
+spring.redis.password=
+# Redis 服务器端口。
+spring.redis.port=6379
+spring.redis.channels=DAY_LOGIN
+
+wechat.appId=wx432a947a61986681
+wechat.appSecret=145979a203551510c811e14488913c23
+bim.server.url=http://localhost:8082/
+bim.server.userName=18706835145@139.com
+bim.server.password=hxfazhm924315521
+#spring.rabbitmq.host=localhost
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+#spring.rabbitmq.virtualhost=/test
+#spring.rabbitmq.port=5672
+#bim.server.url =http://10.10.20.101:8080/
+#bim.server.userName =bim@heyoutec.com
+#bim.server.password =m9HIEz2LL44BQtNv
+url.video.server.url=c:/root/zsyfile/
+
+
+spring.rabbitmq.port=5672
+spring.rabbitmq.host=10.10.21.105
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+spring.rabbitmq.publisher-confirms=true
+spring.rabbitmq.publisher-returns=true
+spring.rabbitmq.virtual-host=/
+spring.rabbitmq.template.mandatory=true
+spring.rabbitmq.listener.simple.retry.max-attempts=3
+spring.rabbitmq.listener.simple.retry.enabled=true
+spring.rabbitmq.listener.simple.retry.initial-interval=1000ms
+spring.rabbitmq.listener.simple.default-requeue-rejected=false
+spring.rabbitmq.listener.simple.acknowledge-mode=manual
+
+# 文件下载的间隔时间
+customize.download.interval_time_open=true
+customize.download.interval_time=10
+## 文件下载的临时目录
+customize.download.temporary_catalogue=/look/
+# 破产小程序二维码是否为体验版
+bankrupt.wechat.qrcode.isTrial=true
+
+check.word.key=0/look/template/check-word-template.docx
+weather.code=0/look/template/sojson_com_city.json
+
+#push.tower.crane=http://124.71.199.55:3002/project/appid/save
+
+
+OAUrl=https://oatest.zhushucloud.net/
+#OAUrl=http://10.10.20.142:8080/
+OATwoUrl=http://10.10.23.190:8080/
